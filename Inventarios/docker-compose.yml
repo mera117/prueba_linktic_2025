@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  inventario-service:
+    image: inventario:1.0.0
+    container_name: Inventarios
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/test_linktic
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 123456
+      API_PRODUCTOS_URL: http://productos:8080
+    networks:
+      - productos_prueba-network
+
+networks:
+  productos_prueba-network:
+    external: true
