@@ -1,65 +1,77 @@
-🧩 Microservicio de Productos
+# 🧩 Microservicio de Productos
 
-Este microservicio está desarrollado con Spring Boot 3 y estructurado bajo principios de arquitectura limpia. Se encarga de la gestión de productos mediante un conjunto de endpoints RESTful que permiten crear, consultar, actualizar y eliminar entidades de producto. Utiliza Spring Data JPA para el acceso a datos sobre una base de datos PostgreSQL, asegurando persistencia eficiente y desacoplada.
-La seguridad está implementada mediante un filtro personalizado que verifica una API Key en las cabeceras HTTP, restringiendo el acceso a los recursos protegidos. La documentación de la API se genera automáticamente usando SpringDoc OpenAPI 3, permitiendo la exploración interactiva desde Swagger UI. Está preparado para entornos de contenedores mediante Docker y docker-compose, y cuenta con pruebas unitarias y de integración.
+Este microservicio está desarrollado con **Spring Boot 3** y estructurado bajo principios de **arquitectura limpia**. Se encarga de la gestión de productos mediante un conjunto de endpoints **RESTful**, permitiendo **crear, consultar, actualizar y eliminar** entidades de producto. Utiliza **Spring Data JPA** para el acceso a datos sobre una base de datos **PostgreSQL**, asegurando una persistencia eficiente y desacoplada.
 
-📦 Microservicio de Inventario
-
-El microservicio de inventario está desarrollado en Spring Boot 3 y aplica una arquitectura hexagonal (ports and adapters) para desacoplar la lógica del dominio de las tecnologías externas. Este servicio se encarga del manejo del stock de productos: consultar cantidades disponibles, registrar ingresos y egresos, y actualizar el inventario en función de las operaciones de compra o entrada.
-Los productos se consultan a través de integración REST con el Microservicio de Productos, y las operaciones de stock se exponen como endpoints REST protegidos mediante JWT (JSON Web Token), validado por un filtro de autenticación personalizado. El servicio está instrumentado para generar logs estructurados, validaciones centralizadas, y también expone su documentación vía Swagger UI. Preparado para despliegue mediante Docker, incluye pruebas unitarias y de integración.
-
-💻 Frontend Angular
-
-El cliente web está desarrollado con Angular 20 utilizando una arquitectura moderna basada en standalone components, zoneless change detection (sin NgZone) y SSR-ready (Server-Side Rendering). Consume los endpoints expuestos por los microservicios de Productos e Inventario, permitiendo a los usuarios finales realizar operaciones de gestión y visualización de inventario en tiempo real.
-El proyecto está estructurado modularmente y utiliza RxJS y HttpClient para la comunicación asíncrona con los servicios. La seguridad se maneja mediante inyección del JWT en los headers HTTP para proteger las rutas privadas, integrando un HttpInterceptor. Además, se proporciona una interfaz amigable, responsiva y desacoplada del backend, preparada para despliegue en contenedores Docker.---
+## 🌐 Características principales
+- **Seguridad:** Implementada mediante un filtro personalizado que verifica una **API Key** en las cabeceras HTTP.
+- **Documentación:** Generada automáticamente con **SpringDoc OpenAPI 3**, accesible desde **Swagger UI**.
+- **Contenedores:** Configurado para despliegue en **Docker** mediante `docker-compose`.
+- **Pruebas:** Implementación de **pruebas unitarias e integración** con JUnit y Mockito.
 
 ---
 
-## Descripción General
-Microservicio desarrollado con Spring Boot 3, orientado a la gestión de productos a través de una API RESTful. Permite realizar operaciones CRUD sobre productos, persistiendo los datos en una base de datos PostgreSQL mediante Spring Data JPA.
-La autenticación está implementada mediante un esquema de API Key, verificada a través de un filtro HTTP personalizado. Este servicio se comunica con otros microservicios utilizando Spring WebClient, facilitando una integración asíncrona, desacoplada y reactiva.
-La documentación de los endpoints se genera automáticamente mediante SpringDoc OpenAPI 3, accesible vía Swagger UI para facilitar la exploración y pruebas. Está dockerizado y preparado para entornos de despliegue local o en la nube, e incluye pruebas automatizadas con JUnit y Mockito.
----
+# 📦 Microservicio de Inventario
 
-## Tecnologías Utilizadas
-- Java 23
-- Spring Boot
-- Spring Data JPA
-- PostgreSQL
-- Spring Security (API Key)
-- Swagger/OpenAPI (springdoc-openapi)
-- JUnit y Mockito
-- Docker
-- Angular 17
+Este microservicio está desarrollado con **Spring Boot 3** y aplica una **arquitectura hexagonal (ports and adapters)** para desacoplar la lógica del dominio de las tecnologías externas. Se encarga del manejo del **stock de productos**, permitiendo consultar cantidades, registrar ingresos y egresos, y actualizar el inventario según las operaciones de compra o entrada.
+
+## 🌐 Características principales
+- **Integración REST:** Consulta productos desde el Microservicio de Productos.
+- **Seguridad:** Autenticación mediante **JWT (JSON Web Token)** con validación a través de un filtro de autenticación personalizado.
+- **Instrumentación:** Logs estructurados y validaciones centralizadas.
+- **Documentación:** Expuesta vía **Swagger UI**.
+- **Contenedores:** Preparado para despliegue en **Docker** con `docker-compose`.
+- **Pruebas:** Pruebas unitarias e integración con JUnit y Mockito.
 
 ---
 
-## Requisitos Previos
-- Java 17 o superior
-- Maven 3.9.x
-- PostgreSQL
-- Docker (opcional, para despliegue)
+# 💻 Frontend Angular
+
+El cliente web está desarrollado con **Angular 20**, usando una arquitectura moderna basada en **standalone components**, **zoneless change detection** y preparado para **SSR (Server-Side Rendering)**. Consume los endpoints de los microservicios de **Productos e Inventario**, permitiendo gestión y visualización de inventario en tiempo real.
+
+## 🌐 Características principales
+- **Modularidad:** Proyecto estructurado en módulos independientes.
+- **Comunicación asíncrona:** Uso de **RxJS y HttpClient** para optimizar solicitudes a los microservicios.
+- **Seguridad:** Integración de **JWT** en headers HTTP mediante **HttpInterceptor**.
+- **Interfaz amigable:** Diseño **responsivo**, desacoplado del backend y listo para **Docker**.
 
 ---
 
-## Instalación
+# 📌 Tecnologías Utilizadas
+
+- **Backend:** Java 23, Spring Boot, Spring Data JPA, PostgreSQL, Spring Security (API Key).
+- **Frontend:** Angular 20.
+- **Documentación:** Swagger/OpenAPI (springdoc-openapi).
+- **Pruebas:** JUnit y Mockito.
+- **Contenedores:** Docker.
+
+---
+
+# ⚡ Instalación y Ejecución
+
+## 🔹 Requisitos Previos
+- Java 17 o superior.
+- Maven 3.9.x.
+- PostgreSQL.
+- Docker (opcional, para despliegue).
+
+## 🔹 Instalación
 1. Clona el repositorio:
    ```sh
    git clone <URL-del-repositorio>
    cd producto-service
-   ```
-2. Compila el proyecto:
-   ```sh
-   ./mvnw clean package
-   ```
+---
+
+## 🔹 Compila el proyecto:
+- ./mvnw clean package
 
 ---
 
-## Configuración
-Edita el archivo `src/main/resources/application.properties` para configurar la conexión a la base de datos y la API Key:
+## 🔹 Configuración
+Edita el archivo application.properties para configurar la conexión a la base de datos y la API Key:
+
 
 ```properties
-spring.datasource.url= jdbc:postgresql://postgres-db:5432/test_linktic
+spring.datasource.url=jdbc:postgresql://postgres-db:5432/test_linktic
 spring.datasource.username=postgres
 spring.datasource.password=tu_password
 service.api.key=tu_api_key
@@ -71,6 +83,7 @@ service.api.key=tu_api_key
 Ejecuta la aplicación localmente:
 ```sh
 java -jar target/Productos-0.0.1-SNAPSHOT.jar
+java -jar target/Inventarios-0.0.1-SNAPSHOT.jar
 ```
 Por defecto, la aplicación se ejecuta en [http://localhost:8080](http://localhost:8080).
 
@@ -416,99 +429,16 @@ C:.
             └───mera
                 └───productos
                         ProductosApplicationTests.class
-
+```
 ---
 
----
+🧱 Arquitectura y Capas
+Este sistema utiliza arquitectura hexagonal (Ports and Adapters) para desacoplar la lógica del negocio de las dependencias externas.
+🏛️ Capas del sistema
+- Dominio: Contiene la lógica de negocio y las reglas fundamentales.
+- Aplicación: Define los casos de uso y orquesta interacciones entre el dominio y la infraestructura.
+- Infraestructura: Maneja la persistencia de datos, conectividad y adaptadores.
 
-## Arquitectura y Capas
-
-Se realiza el uso de la arquitectura hexagonal (también conocida como Ports and Adapters) es un patrón que busca separar claramente el núcleo de la lógica del negocio de
-las dependencias externas (como bases de datos, interfaces web, APIs, etc.), logrando así un sistema más mantenible, testable y desacoplado.
-
-🔶 1. Dominio (Núcleo o Core)
-Es el corazón del sistema. Contiene la lógica de negocio pura y es completamente independiente de frameworks, bases de datos o librerías externas.
-
-Incluye:
-Entidades: Modelos del dominio con comportamiento. Ej.: Producto, Inventario.
-
-Value Objects: Objetos inmutables que representan conceptos con valor (como Precio, Cantidad).
-
-Servicios de Dominio: Contienen lógica de negocio que no pertenece a una sola entidad.
-
-Interfaces de Puertos (Ports): Interfaces que definen los contratos que necesita el dominio para funcionar.
-
-✅ No debe conocer nada de infraestructura externa.
-
-🔷 2. Puertos (Ports)
-Son interfaces que definen cómo interactuar con el núcleo desde el exterior o cómo el núcleo interactúa hacia el exterior. Se clasifican en:
-
-Puertos de Entrada (Driving Ports): Representan casos de uso que otros componentes pueden ejecutar. Ej.: InventarioService.agregarProducto().
-
-Puertos de Salida (Driven Ports): Representan dependencias externas que el núcleo necesita, pero que no implementa directamente. Ej.: RepositorioProducto, NotificadorDeEventos.
-
-✅ Se definen dentro del dominio para no depender de implementaciones externas.
-
-🟩 3. Adaptadores (Adapters)
-Son las implementaciones concretas de los puertos. Se ubican en los bordes del sistema.
-
-Tipos:
-Adaptadores de Entrada: Transforman entradas externas (HTTP, CLI, mensajería) en comandos del dominio.
-
-Ej.: Controladores REST, GraphQL, endpoints Kafka.
-
-Adaptadores de Salida: Implementan la lógica de conexión con tecnologías externas.
-
-Ej.: Repositorios JPA, clientes HTTP, integraciones con otros sistemas.
-
-✅ Son reemplazables sin afectar el dominio.
-
-🔁 4. Casos de Uso (Application Layer)
-En implementaciones más detalladas, se incluye una capa de aplicación entre los adaptadores y el dominio puro.
-
-Coordina entidades y servicios del dominio.
-
-Se comunica con los puertos de entrada y salida.
-
-No contiene lógica de negocio, pero sí orquestación.
-
-🧱 5. Infraestructura
-Es donde viven los detalles técnicos y configuraciones:
-
-Spring Boot, frameworks, JPA, API REST, Kafka, bases de datos, etc.
-
-Implementa los adaptadores de salida.
-
-✅ Nunca toca directamente el dominio.
-
-
-🎯 Diagrama Simplificado
-         ┌──────────────────────────┐
-         │   Adaptador de Entrada   │  ← REST, CLI, Web
-         └────────────┬─────────────┘
-                      ↓
-               ┌────────────┐
-               │   Puerto   │ ← Interfaz de entrada
-               │ de Entrada │
-               └────────────┘
-                      ↓
-             ┌────────────────┐
-             │     CASO DE    │ ← Lógica de aplicación
-             │     USO        │
-             └────────────────┘
-                      ↓
-         ┌────────────┴─────────────┐
-         │         Dominio          │ ← Entidades, servicios, reglas
-         └────────────┬─────────────┘
-                      ↓
-             ┌────────────┐
-             │   Puerto   │ ← Interfaz de salida
-             │ de Salida  │
-             └────────────┘
-                      ↓
-         ┌──────────────────────────┐
-         │   Adaptador de Salida    │  ← JPA, HTTP client, etc.
-         └──────────────────────────┘
 
 
 ---
